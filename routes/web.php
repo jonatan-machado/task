@@ -11,14 +11,14 @@
 |
 */
 
+//Rota da Home
 Route::get('/', function () {
-    return view('welcome');
+    return view('form');
 });
 
-Route::get('clients/create/new',function(){
-    return '<h1>Criar Cliente</h1>';
-});
+Route::resource('clients', 'ClientController');
 
-Route::get('clients/{name}/{age?}', function ($name, $age='nao definido') {
-    return "Datalhes do cliente {$name} ele tem {$age} anos";    
-})->where(['age' => '[0-9]', 'name' => '[A-Za-z]+']);
+
+
+Auth::routes();
+Route::get('/home','HomeController@index')->name('home');
